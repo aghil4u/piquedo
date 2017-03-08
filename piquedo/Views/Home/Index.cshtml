@@ -3,22 +3,106 @@
 }
 
 
+
 <link href="~/Content/ParticleFeaver.css" rel="stylesheet">
 
 
-<div class="full-bg-img flex-center white-text">
+<div class="full-bg-img flex-center white-text" style="background-color: #1581ee;">
     <div id="particles-js" class="autoFadeIn"></div>
 
     <div class="container">
         <div class="tags">
-            <input placeholder="Search For Works" type="text">
+            <input placeholder="Search For Works" type="text" class="input-group">
         </div>
     </div>
 </div>
 
-<div class="row" style="min-height: 200px;">
+<div class="row" style="min-height: 1000px;">
 
 </div>
+
+
+
+<div class="container" id="marginFromTop">
+
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card hoverable" style="margin-top: 50px;" onclick="location.href='@Url.Action("Create","Works")'">
+                <!--Card image-->
+                <div class="view overlay hm-white-slight" onclick="">
+                    <img src="https://mdbootstrap.com/images/regular/city/img%20(4).jpg" class="img-fluid">
+
+                </div>
+                <!--/.Card image-->
+                <div class="card-block text-center">
+
+                    <h4 class="card-title">@Html.ActionLink("Post Job", "Create", "Works")</h4>
+                    <p class="card-text">
+                        Need your Garden Rennovated? Pool cleaned? maybe make a custom Wardrobe? Tell us what you need and our skilled worker base will get it done!
+                    </p>
+                    <p>
+                        <a class="btn primary-color" href=@Url.Action("Create","Works")>Post a Work</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hoverable" style="margin-top: 50px;" onclick="location.href='@Url.Action("Index","Works")'">
+                <!--Card image-->
+                <div class="view overlay hm-white-slight">
+                    <img src="https://mdbootstrap.com/images/regular/city/img%20(3).jpg" class="img-fluid" alt="">
+                    <a>
+                        <div class="mask"></div>
+                    </a>
+                </div>
+                <!--/.Card image-->
+
+                <div class="card-block text-center">
+
+                    <h4 class="card-title">@Html.ActionLink("Look for Work", "Index", "Works")</h4>
+                    <p>Bored? Have alot of free time? want to do something productive? maybe make some money while doing it? Check out these oppurtunities around you!</p>
+                    <p>
+                        <a class="btn primary-color" href=@Url.Action("Index","Works")>Look For Works</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="col-md-4" style="margin-top: 50px;">
+            <div class="card hoverable" onclick="location.href='@Url.Action("Listings","Works")'">
+                <!--Card image-->
+                <div class="view overlay hm-white-slight">
+                    <img src="https://mdbootstrap.com/images/regular/city/img%20(4).jpg" class="img-fluid" alt="">
+                    <a>
+                        <div class="mask"></div>
+                    </a>
+                </div>
+                <!--/.Card image-->
+
+                <div class="card-block text-center">
+                    <h4 class="card-title">Improve Your Skills</h4>
+                    <p>Get hundreds of customers from around your locality. expand your reach and improve your skills based on your client's Feedback.</p>
+                    <p>
+                        <a class="btn primary-color">Learn more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
 
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 

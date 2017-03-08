@@ -4,114 +4,155 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<!--
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostingDate)
+            Html.DisplayNameFor(model => model.PostingDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Location)
+            Html.DisplayNameFor(model => model.Location)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FromDate)
+            Html.DisplayNameFor(model => model.FromDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Expiry)
+            Html.DisplayNameFor(model => model.Expiry)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WorkType)
+            Html.DisplayNameFor(model => model.WorkType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SkillLevel)
+            Html.DisplayNameFor(model => model.SkillLevel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WorkCategory)
+            Html.DisplayNameFor(model => model.WorkCategory)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AlternateContact)
+            Html.DisplayNameFor(model => model.AlternateContact)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RenumerationType)
+            Html.DisplayNameFor(model => model.RenumerationType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RenumerationAmount)
+            Html.DisplayNameFor(model => model.RenumerationAmount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImgUrl)
+            Html.DisplayNameFor(model => model.ImgUrl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tags)
+            Html.DisplayNameFor(model => model.Tags)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            Html.DisplayNameFor(model => model.AspNetUser.Email)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PostingDate)
+            Html.DisplayFor(modelItem => item.PostingDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Location)
+            Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FromDate)
+            Html.DisplayFor(modelItem => item.FromDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Expiry)
+            Html.DisplayFor(modelItem => item.Expiry)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.WorkType)
+            Html.DisplayFor(modelItem => item.WorkType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SkillLevel)
+            Html.DisplayFor(modelItem => item.SkillLevel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.WorkCategory)
+            Html.DisplayFor(modelItem => item.WorkCategory)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AlternateContact)
+            Html.DisplayFor(modelItem => item.AlternateContact)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RenumerationType)
+            Html.DisplayFor(modelItem => item.RenumerationType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RenumerationAmount)
+            Html.DisplayFor(modelItem => item.RenumerationAmount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImgUrl)
+            Html.DisplayFor(modelItem => item.ImgUrl)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tags)
+            Html.DisplayFor(modelItem => item.Tags)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+            Html.DisplayFor(modelItem => item.AspNetUser.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+            Html.ActionLink("Details", "Details", new {id = item.Id}) |
+            Html.ActionLink("Delete", "Delete", new {id = item.Id})
         </td>
     </tr>
-}
+
+
+    }
 
 </table>
+-->
+<div class="row StdBg" style="height: 300px;"></div>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="supercard listingCard">
+            <div class="supercard-imgpane">
+
+                <div class="category listingCategory">
+                    @Html.DisplayFor(model => item.WorkType)
+                </div>
+                <div class="supercard-img" style="background-image: url(https://honthomisland.com/wp-content/uploads/2015/12/ddg.jpg)"></div>
+            </div>
+            <div class="supercard-content">
+                <div class="box categoryBox">
+                </div>
+
+
+                <div class="listingTitle" style="margin-top: 5px">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </div>
+                <div class="tagBar">
+                    <div class="tag">
+                        carperntry
+                    </div>
+                    <div class="tag">
+                        building
+                    </div>
+                </div>
+
+                <p class="listingContent">
+                    @Html.DisplayFor(model => item.Description)
+                </p>
+
+            </div>
+            <div class="act">
+                <div class="footnote">@Html.DisplayFor(model => item.RenumerationAmount)</div>
+                <div class="footnote"> @Html.DisplayFor(model => item.RenumerationType)</div>
+                <div class="button">QUOTE</div>
+            </div>
+        </div>
+    }</div>
