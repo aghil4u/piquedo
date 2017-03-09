@@ -116,43 +116,51 @@
 </table>
 -->
 <div class="row StdBg" style="height: 300px;"></div>
+
 <div class="container">
-    @foreach (var item in Model)
-    {
-        <div class="supercard listingCard">
-            <div class="supercard-imgpane">
-
-                <div class="category listingCategory">
-                    @Html.DisplayFor(model => item.WorkType)
-                </div>
-                <div class="supercard-img" style="background-image: url(https://honthomisland.com/wp-content/uploads/2015/12/ddg.jpg)"></div>
-            </div>
-            <div class="supercard-content">
-                <div class="box categoryBox">
-                </div>
-
-
-                <div class="listingTitle" style="margin-top: 5px">
-                    @Html.DisplayFor(modelItem => item.Title)
-                </div>
-                <div class="tagBar">
-                    <div class="tag">
-                        carperntry
-                    </div>
-                    <div class="tag">
-                        building
-                    </div>
-                </div>
-
-                <p class="listingContent">
-                    @Html.DisplayFor(model => item.Description)
-                </p>
-
-            </div>
-            <div class="act">
-                <div class="footnote">@Html.DisplayFor(model => item.RenumerationAmount)</div>
-                <div class="footnote"> @Html.DisplayFor(model => item.RenumerationType)</div>
-                <div class="button">QUOTE</div>
-            </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="supercard filterCard"></div>
         </div>
-    }</div>
+        <div class="col-12 col-md-9">
+            @foreach (var item in Model)
+            {
+                <div class="supercard listingCard">
+                    <div class="supercard-imgpane">
+
+                        <div class="category listingCategory">
+                            @Html.DisplayFor(model => item.WorkType)
+                        </div>
+                        <div class="supercard-img" style="background-image: url(https://honthomisland.com/wp-content/uploads/2015/12/ddg.jpg)"></div>
+                    </div>
+                    <div class="supercard-content">
+                        <div class="box categoryBox">
+                        </div>
+
+
+                        <div class="listingTitle" style="margin-top: 5px">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </div>
+                        <div class="tagBar">
+                            <div class="tag">
+                                carperntry
+                            </div>
+                            <div class="tag">
+                                building
+                            </div>
+                        </div>
+
+                        <p class="listingContent">
+                            @Html.DisplayFor(model => item.Description)
+                        </p>
+
+                    </div>
+                    <div class="act">
+                        <div class="footnote">@Html.DisplayFor(model => item.RenumerationAmount)</div>
+                        <div class="footnote"> @Html.DisplayFor(model => item.RenumerationType)</div>
+                        <div class="button">QUOTE</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div></div>
