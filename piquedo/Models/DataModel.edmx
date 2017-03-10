@@ -96,8 +96,8 @@
           <Property Name="RenumerationAmount" Type="nvarchar" MaxLength="50" />
           <Property Name="ImgUrl" Type="ntext" />
           <Property Name="Tags" Type="nvarchar" MaxLength="128" />
-          <Property Name="Lat" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="lon" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Latitude" Type="numeric" Precision="18" Scale="16" />
+          <Property Name="Longitude" Type="numeric" Precision="18" Scale="16" />
         </EntityType>
         <Association Name="FK__ImgRecord__Posti__398D8EEE">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -111,7 +111,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ImgRecord__WorkI__3A81B327">
+        <Association Name="FK__ImgRecord__WorkI__6FE99F9F">
           <End Role="Works" Type="Self.Works" Multiplicity="1" />
           <End Role="ImgRecord" Type="Self.ImgRecord" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Works__PostingUs__36B12243">
+        <Association Name="FK__Works__PostingUs__70DDC3D8">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Works" Type="Self.Works" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,11 +204,11 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="ImgRecord" EntitySet="ImgRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__ImgRecord__WorkI__3A81B327" Association="Self.FK__ImgRecord__WorkI__3A81B327">
+          <AssociationSet Name="FK__ImgRecord__WorkI__6FE99F9F" Association="Self.FK__ImgRecord__WorkI__6FE99F9F">
             <End Role="Works" EntitySet="Works" />
             <End Role="ImgRecord" EntitySet="ImgRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__Works__PostingUs__36B12243" Association="Self.FK__Works__PostingUs__36B12243">
+          <AssociationSet Name="FK__Works__PostingUs__70DDC3D8" Association="Self.FK__Works__PostingUs__70DDC3D8">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Works" EntitySet="Works" />
           </AssociationSet>
@@ -328,8 +328,8 @@
           <Property Name="Tags" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK__Works__PostingUs__36B12243" FromRole="Works" ToRole="AspNetUsers" />
           <NavigationProperty Name="ImgRecords" Relationship="Self.FK__ImgRecord__WorkI__3A81B327" FromRole="Works" ToRole="ImgRecord" />
-          <Property Name="Lat" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="lon" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="16" />
+          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="16" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -507,8 +507,8 @@
           <EntitySetMapping Name="Works">
             <EntityTypeMapping TypeName="WorksModel.Work">
               <MappingFragment StoreEntitySet="Works">
-                <ScalarProperty Name="lon" ColumnName="lon" />
-                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PostingUserID" ColumnName="PostingUserID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

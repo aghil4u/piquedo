@@ -36,8 +36,8 @@ namespace piquedo.Models
         public string RenumerationAmount { get; set; }
         public string ImgUrl { get; set; }
         public string Tags { get; set; }
-        public Nullable<decimal> Lat { get; set; }
-        public Nullable<decimal> lon { get; set; }
+        public Nullable<decimal> Latitude { get; set; }
+        public Nullable<decimal> Longitude { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

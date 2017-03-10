@@ -51,10 +51,10 @@ namespace piquedo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title,Description,Location,Lat,lon,FromDate,Expiry,WorkType,SkillLevel,WorkCategory,AlternateContact,RenumerationType,RenumerationAmount,ImgUrl,Tags")] Work work)
+        public ActionResult Create([Bind(Include = "Title,Description,Location,Latitude,Longitude,FromDate,Expiry,WorkType,SkillLevel,WorkCategory,AlternateContact,RenumerationType,RenumerationAmount,ImgUrl,Tags")] Work work)
         {
             
-            work.Id = int.Parse(db.Works.Max(w => w.Id))+1.ToString();
+            work.Id = (int.Parse(db.Works.Max(w => w.Id))+1).ToString();
             work.PostingUserID =User.Identity.GetUserId();
             work.PostingDate=DateTime.Now;
             
