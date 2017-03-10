@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using piquedo.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace piquedo.Controllers
 {
@@ -49,8 +51,15 @@ namespace piquedo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PostingUserID,Title,Description,PostingDate,Location,FromDate,Expiry,WorkType,SkillLevel,WorkCategory,AlternateContact,RenumerationType,RenumerationAmount,ImgUrl,Tags")] Work work)
+        public ActionResult Create([Bind(Include = "Title,Description,Location,FromDate,Expiry,WorkType,SkillLevel,WorkCategory,AlternateContact,RenumerationType,RenumerationAmount,ImgUrl,Tags")] Work work)
         {
+            work.Id = db.Works.Max(w=>w.Id)+1;
+            work.PostingUserID =User.Identity.GetUserId();
+            work.PostingDate=DateTime.Now;
+            if (work.Expiry==null)
+            {
+                work.Expiry = DateTime.Now.AddDays(180);
+            }
             if (ModelState.IsValid)
             {
                 db.Works.Add(work);

@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace piquedo.Models
 {
     using System;
@@ -19,7 +22,6 @@ namespace piquedo.Models
         {
             this.ImgRecords = new HashSet<ImgRecord>();
         }
-    
         public string Id { get; set; }
         public string PostingUserID { get; set; }
         public string Title { get; set; }
