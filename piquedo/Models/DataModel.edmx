@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WorksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WorksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -96,6 +96,8 @@
           <Property Name="RenumerationAmount" Type="nvarchar" MaxLength="50" />
           <Property Name="ImgUrl" Type="ntext" />
           <Property Name="Tags" Type="nvarchar" MaxLength="128" />
+          <Property Name="Lat" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="lon" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__ImgRecord__Posti__398D8EEE">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -227,8 +229,7 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WorksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -327,6 +328,8 @@
           <Property Name="Tags" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK__Works__PostingUs__36B12243" FromRole="Works" ToRole="AspNetUsers" />
           <NavigationProperty Name="ImgRecords" Relationship="Self.FK__ImgRecord__WorkI__3A81B327" FromRole="Works" ToRole="ImgRecord" />
+          <Property Name="Lat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="lon" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -504,6 +507,8 @@
           <EntitySetMapping Name="Works">
             <EntityTypeMapping TypeName="WorksModel.Work">
               <MappingFragment StoreEntitySet="Works">
+                <ScalarProperty Name="lon" ColumnName="lon" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PostingUserID" ColumnName="PostingUserID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
