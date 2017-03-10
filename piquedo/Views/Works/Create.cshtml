@@ -123,29 +123,50 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Tags, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Lat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+
+     
+                @Html.HiddenFor(m => m.lon, "lon");
                 <input type="submit" value="Create" class="btn btn-default"/>
             </div>
         </div>
     </div>
+
+
+
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
+
 <div id="dvMap" style="width: 500px; height: 500px">
 </div>
 
 
-
-
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIu4SHaBX7GNfVOgi5PpkLJda23CRpAko&callback=initMap"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4dYsmNqRp7JAatFX9qqXZ0VumlR-5Ogs&callback=initMap"></script>
 <script type="text/javascript">
+    document.getElementById('Lat').value = 5;
+    document.getElementById('lon').value = 5;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(p) {
             var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+            if (p.coords.longitude != null) {
+                document.getElementById('Lat').value = p.coords.latitude;
+                document.getElementById('lon').value = p.coords.longitude;
+            }
+       
+
             var mapOptions = {
                 center: LatLng,
                 zoom: 13,
