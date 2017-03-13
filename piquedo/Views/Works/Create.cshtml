@@ -33,11 +33,10 @@
         </div>
 
 
-
         <div class="form-group">
             @Html.LabelFor(model => model.Location, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Location, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.EditorFor(model => model.Location, new {htmlAttributes = new {@class = "form-control", @id = "locationInput"}})
                 @Html.ValidationMessageFor(model => model.Location, "", new {@class = "text-danger"})
             </div>
         </div>
@@ -126,16 +125,13 @@
             <div class="col-md-offset-2 col-md-10">
 
                 @Html.HiddenFor(m => m.Longitude, "Longitude");
-                @Html.HiddenFor(m => m.Longitude, "Latitude");
+                @Html.HiddenFor(m => m.Latitude, "Latitude");
 
-             
+
                 <input type="submit" value="Create" class="btn btn-default"/>
             </div>
         </div>
     </div>
-
-
-
 }
 
 <div>
@@ -143,18 +139,20 @@
 </div>
 
 
-
-<div id="dvMap" style="width: 500px; height: 500px">
+<div id="dvMap" style="height: 500px; width: 500px;">
 </div>
 
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4dYsmNqRp7JAatFX9qqXZ0VumlR-5Ogs&callback=initMap"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCJVxdbYTt-fuaInkkAXsNpkwczrHkS8Q&sensor=false"></script>
+
 <script type="text/javascript">
+
+    /*
     document.getElementById('Latitude').value = 5;
     document.getElementById('Longitude').value = 5;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(p) {
-            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude); //new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
             if (p.coords.longitude != null) {
                 document.getElementById('Latitude').value = p.coords.latitude;
                 document.getElementById('Longitude').value = p.coords.longitude;
@@ -182,6 +180,58 @@
     } else {
         alert('Geo Location feature is not supported in this browser.');
     }
+
+    */
+
+
+    var geocoder = new google.maps.Geocoder;
+    var LatLng = new google.maps.LatLng(24.459848, 54.378409);
+    document.getElementById("Latitude").value = LatLng.latitude;
+    document.getElementById("Longitude").value = LatLng.longitude;
+
+    var mapOptions = {
+        center: LatLng,
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        minzoom: 13,
+    };
+    var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+    var marker = new google.maps.Marker({
+        draggable: true,
+        position: LatLng,
+        visible: true,
+        map: map,
+        title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + LatLng.latitude + "<br />Longitude: " + LatLng.longitude
+    });
+
+
+    google.maps.event.addListener(marker, "click", function(e) {
+        var infoWindow = new google.maps.InfoWindow();
+        infoWindow.setContent(marker.title);
+        infoWindow.open(map, marker);
+    });
+
+
+    google.maps.event.addListener(marker, "dragend", function(e) {
+        document.getElementById("Latitude").value = marker.getPosition().lat();
+        document.getElementById("Longitude").value = marker.getPosition().lng();
+
+
+        var temo = { lat: marker.getPosition().lat(), lng: marker.getPosition().lng() };
+        geocoder.geocode({ 'location': temo }, function(results, status) {
+            if (status === "OK") {
+                if (results[1]) {
+                    document.getElementById("locationInput").value = results[1].formatted_address;
+                } else {
+                    window.alert("No results found");
+                }
+            } else {
+
+            }
+        });
+
+
+    });
 </script>
 
 @section Scripts {
