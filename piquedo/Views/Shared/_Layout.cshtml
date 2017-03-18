@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv=“X-UA-Compatible” content=“IE=8” />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,7 +22,7 @@
 
 
 </head>
-<body style="background-color: whitesmoke">
+<body style="background-color: whitesmoke; width: 100%">
 <!---
 <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
@@ -56,7 +56,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href=@Url.Action("Index","Home")>
-                <strong>WORKFORK</strong>
+                <img class="navicon" src="~/images/logoframelessWhite.png" height="32" width="auto"/>
             </a>
             <div class="collapse navbar-collapse" id="navbarNav1">
                 <ul class="navbar-nav mr-auto">
@@ -76,13 +76,12 @@
             </div>
         </div>
     </nav>
-    <!--/.Navbar-->
+<!--/.Navbar-->
+
 
 @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - WORKFORK</p>
-        </footer>
+
+
    
 
     @Scripts.Render("~/bundles/jquery")
