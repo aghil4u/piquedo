@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -53,7 +54,9 @@ namespace piquedo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Title,Description,Location,Latitude,Longitude,FromDate,Expiry,WorkType,SkillLevel,WorkCategory,AlternateContact,RenumerationType,RenumerationAmount,ImgUrl,Tags")] Work work)
         {
-            
+       
+
+
             work.Id = (int.Parse(db.Works.Max(w => w.Id))+1).ToString();
             work.PostingUserID =User.Identity.GetUserId();
             work.PostingDate=DateTime.Now;
@@ -70,8 +73,19 @@ namespace piquedo.Controllers
             }
 
             ViewBag.PostingUserID = new SelectList(db.AspNetUsers, "Id", "Email", work.PostingUserID);
+
+    
             return View(work);
         }
+
+        [HttpPost]
+        public ActionResult uploadImage(string image)
+        {
+            return null;
+        }
+
+
+
 
         // GET: Works/Edit/5
         public ActionResult Edit(string id)
@@ -139,6 +153,55 @@ namespace piquedo.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        [HttpPost]
+        public ActionResult UploadFiles()
+        {
+            string fname="";
+            // Checking no of files injected in Request object  
+            if (Request.Files.Count > 0)
+            {
+                try
+                {
+                    //  Get all files from Request object  
+                    HttpFileCollectionBase files = Request.Files;
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        //string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/";  
+                        //string filename = Path.GetFileName(Request.Files[i].FileName);  
+
+                        HttpPostedFileBase file = files[i];
+
+
+                        // Checking for Internet Explorer  
+                        if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
+                        {
+                            string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                            fname = testfiles[testfiles.Length - 1];
+                        }
+                        else
+                        {
+                            fname = DateTime.Now.ToString("yyyyMMddHHmmss")+file.FileName.Substring(file.FileName.Length-4);
+                        }
+
+                        // Get the complete folder path and store the file inside it.  
+                        
+                        file.SaveAs(Path.Combine(Server.MapPath("~/images/Userimages/"), fname));
+                    }
+                    // Returns message that successfully uploaded  
+                    return Json("/images/Userimages/"+fname);
+                }
+                catch (Exception ex)
+                {
+                    return Json("Error occurred. Error details: " + ex.Message);
+                }
+            }
+            else
+            {
+                return Json("No files selected.");
+            }
         }
     }
 }

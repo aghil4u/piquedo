@@ -18,7 +18,7 @@ body {
 
 /* Navigation*/
 
-.navbar { background-color: transparent;height: 30px; }
+.navbar { background-color: transparent;height: 56px; }
 
 .top-nav-collapse { background-color: #1581ee; }
 
@@ -545,15 +545,15 @@ footer.page-footer { background-color: #1581ee; }
 
 .postingCard .TitleInput {
     border: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 5px 10px 10px 10px;
     outline: 0;
-    width: auto;
+    width: 100%;
 }
 
 .postingCard .DescriptionInput {
     border: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 22px;
     margin: 5px 10px 10px 10px;
     outline: 0;
@@ -586,7 +586,46 @@ footer.page-footer { background-color: #1581ee; }
 
 .navicon {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: -10px;
+}
+
+.fileUpload {
+    height: 12em;
+    width: 12em;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
+.fileUpload .form-control-file {
+  position: relative;
+  height: 100%;
+    width: 100%;
+  outline: none;
+  visibility: hidden;
+  cursor: pointer;
+}
+.fileUpload .form-control-file:before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 40%;
+  opacity: 1;
+  visibility: visible;
+  text-align: center;
+  border: 0.1em dashed currentColor;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  border-radius: 5px;
+
+}
+.fileUpload .form-control-file:hover:before {
+  border-style: solid;
+  box-shadow: inset 0px 0px 0px 0.5em currentColor;
 }
 

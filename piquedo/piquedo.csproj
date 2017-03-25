@@ -257,6 +257,7 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Work.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -296,8 +297,6 @@
     <Content Include="Models\DataModel.edmx.diagram">
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\3472-18664.el-alt.com - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\3472-18664.el-alt.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Models\DataModel.Context.tt">
@@ -375,6 +374,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\UserImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

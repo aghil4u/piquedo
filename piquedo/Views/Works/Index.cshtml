@@ -131,7 +131,9 @@
                         <div class="category listingCategory">
                             @Html.DisplayFor(model => item.WorkType)
                         </div>
-                        <div class="supercard-img" style="background-image: url(https://honthomisland.com/wp-content/uploads/2015/12/ddg.jpg)"></div>
+                        <div class="supercard-img" style="background-image: url(@item.ImgUrl)" >
+                            
+                        </div>
                     </div>
                     <div class="supercard-content">
                         <div class="box categoryBox">
@@ -156,6 +158,7 @@
 
                     </div>
                     <div class="act">
+                        <div class="footnote" style="font-size: .5rem">@Html.DisplayFor(model => item.Location)</div>
                         <div class="footnote">@Html.DisplayFor(model => item.RenumerationAmount)</div>
                         <div class="footnote"> @Html.DisplayFor(model => item.RenumerationType)</div>
                         <div class="button">QUOTE</div>
