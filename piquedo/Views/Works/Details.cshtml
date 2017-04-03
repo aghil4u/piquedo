@@ -1,12 +1,72 @@
-﻿@model piquedo.Models.Work
+﻿@using piquedo.Models
+@model piquedo.Models.Work
 
 @{
     ViewBag.Title = "Details";
+    
 }
 
-<h2>Details</h2>
 
-<div>
+<div class="row StdBg" style="height: 300px; width: 100%;"></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 hidden-md-down">
+            <div class="supercard filterCard"></div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-9">
+        
+                <div class="supercard listingCard" >
+                    <div class="supercard-imgpane">
+
+                        <div class="category listingCategory">
+                            @Html.DisplayFor(model => model.WorkType)
+                        </div>
+                        <div class="supercard-img">
+
+                        </div>
+                    </div>
+                    <div class="supercard-content">
+                        <div class="box categoryBox">
+                        </div>
+
+
+                        <div class="listingTitle" style="margin-top: 5px">
+                            @Html.DisplayFor(model => model.Title)
+                        </div>
+                        <div class="tagBar">
+                            <div class="tag">
+                                carperntry
+                            </div>
+                            <div class="tag">
+                                building
+                            </div>
+                        </div>
+
+                        <p class="listingContent">
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+
+                    </div>
+                    <div class="act">
+                        <div class="footnote" style="font-size: .5rem">@Html.DisplayFor(model => model.Location)</div>
+                        <div class="footnote">@Html.DisplayFor(model => model.RenumerationAmount)</div>
+                        <div class="footnote"> @Html.DisplayFor(model => model.RenumerationType)</div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+@*<div>
     <h4>Work</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -131,8 +191,15 @@
         </dd>
 
     </dl>
-</div>
-<p>
+</div>*@
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
+
+<style>
+    .supercard-img {
+        background-image: url(@Html.ViewData.Model.ImgUrl); 
+    }
+
+</style>

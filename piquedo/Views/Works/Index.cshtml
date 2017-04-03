@@ -125,7 +125,7 @@
         <div class="col-12 col-md-12 col-lg-9">
             @foreach (var item in Model)
             {
-                <div class="supercard listingCard">
+                <div class="supercard listingCard" onclick="location.href='@Url.Action("Details",new {id=item.Id})'">
                     <div class="supercard-imgpane">
 
                         <div class="category listingCategory">
@@ -161,7 +161,7 @@
                         <div class="footnote" style="font-size: .5rem">@Html.DisplayFor(model => item.Location)</div>
                         <div class="footnote">@Html.DisplayFor(model => item.RenumerationAmount)</div>
                         <div class="footnote"> @Html.DisplayFor(model => item.RenumerationType)</div>
-                        <div class="button">QUOTE</div>
+                        <div class="button" onclick="location.href='@Url.Action("Details",new {id=item.Id})'" >QUOTE</div>
                     </div>
                 </div>
             }

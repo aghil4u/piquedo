@@ -46,17 +46,17 @@
     <WarningLevel>4</WarningLevel>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1" Enabled="True">
           <Destination Path="Data Source=tcp:nestserver.database.windows.net,1433%3bInitial Catalog=NestDb%3bUser Id=null%40nestserver.database.windows.net%3bPassword=Dadsmagaav4u" />
           <Object Type="DbFullSql">
             <PreSource Path="Data Source=%28LocalDb%29\MSSQLLocalDB%3bAttachDbFilename=|DataDirectory|\aspnet-piquedo-20170305081150.mdf%3bInitial Catalog=aspnet-piquedo-20170305081150%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Release\AutoScripts\DefaultConnection-Deployment_SchemaAndData.sql" Transacted="True" />
           </Object>
         </ObjectGroup>
-        <ObjectGroup Name="DbEntities-Deployment" Order="2">
+        <ObjectGroup Name="DbEntities-Deployment" Order="2" Enabled="True">
           <Destination Path="Data Source=tcp:nestserver.database.windows.net,1433%3bInitial Catalog=NestDb%3bUser Id=null%40nestserver.database.windows.net%3bPassword=Dadsmagaav4u" />
           <Object Type="DbFullSql">
-            <PreSource Path="Data Source=%28LocalDb%29\MSSQLLocalDB%3bAttachDbFilename=|DataDirectory|\aspnet-piquedo-20170305081150.mdf%3bInitial Catalog=aspnet-piquedo-20170305081150%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <PreSource Path="Data Source=%28LocalDb%29\MSSQLLocalDB%3bAttachDbFilename=|DataDirectory|\aspnet-piquedo-20170305081150.mdf%3bInitial Catalog=aspnet-piquedo-20170305081150%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Release\AutoScripts\DbEntities-Deployment_SchemaAndData.sql" Transacted="True" />
           </Object>
         </ObjectGroup>
@@ -298,6 +298,7 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\GoogleCloud.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Models\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
